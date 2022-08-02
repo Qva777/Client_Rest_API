@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                 ('password', models.CharField(max_length=20, verbose_name='Пароль')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Обновлено')),
-                ('content', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, to='client.task')),
+                ('content', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, to='client_API.task')),
             ],
             options={
                 'verbose_name': 'Клиент',

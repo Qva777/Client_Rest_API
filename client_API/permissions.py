@@ -11,7 +11,6 @@ class IsAdminOrReadOnly(permissions.BasePermission):
         return bool(request.user and request.user.is_staff)
 
 
-
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """Правки может вносить только пользователь который создал запись"""
     def has_object_permission(self, request, view, obj):
@@ -19,6 +18,3 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
 
         return obj.user == request.user
-
-    # def perform_create(self, serializer):
-    #     serializer.save(owner=self.request.user)
