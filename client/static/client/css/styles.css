@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    font-size: 28px;
+}
+
+.header {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+}
+
+#navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+#navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
+.centered {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    right: 30%;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 40px;
+    letter-spacing: +1px;
+    background: rgba(40, 169, 224, 0.6);
+    text-align: center;
+}
+
+.container {
+    position: center;
+    top: 680px;
+    width: 100%;
+    height: 100%;
+}
+
+p.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+}
+
+
+
