@@ -1,0 +1,9 @@
+{% extends 'client/navbar.html' %}
+
+{% block title %}Profile page{% endblock %}
+
+{% block content %}
+<br><h1 align="center">Здравствуйте, {{ user }}!</h1><br>
+{% include 'client/containers.html' %}
+
+{% endblock %}

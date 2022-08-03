@@ -14,16 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
-    path('api/', include("client_API.urls")),
-    # path('', include("startbootstrap-landing-page.urls")),
-#исправь
     path('', include("client.urls")),
+    path('api/', include("client_API.urls")),
+    path('sign-in/', include('rest_framework.urls'), name='sign_in'),
+
+    # DJOSER TOKEN
     path('auth/', include('djoser.urls')),
-    # path('auth-token/', include('djoser.urls.authtoken')),
-    path('sign-in/', include('rest_framework.urls')),
+    re_path('^auth-token/', include('djoser.urls.authtoken')),
+
+    # JWT TOKEN
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
 ]
