@@ -10,7 +10,7 @@ from .models import Manager
 class TaskCreateView(generics.CreateAPIView):
     """Создание задачи"""
     serializer_class = ManagerDetailSerializers
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
 
 class TaskAPIListPagination(PageNumberPagination):
@@ -18,6 +18,7 @@ class TaskAPIListPagination(PageNumberPagination):
     page_size = 3
     page_size_query_param = 'page_size'  # При добавлении в url &page_size=10 можно указать своё значение
     max_page_size = 100
+
 
 class TaskListView(generics.ListAPIView):
     """Информация про все задачи"""
@@ -31,5 +32,3 @@ class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ManagerDetailSerializers
     queryset = Manager.objects.all()
     # permission_classes = (IsAuthenticatedOrReadOnly,)
-
-

@@ -32,12 +32,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about' %}">About us</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="sign1">
+                    <a class="nav-link" href="http://127.0.0.1:8000/sign-in/logout/">{{ user }} LOG OUT</a>
+                </li>
+                {% else %}
                 <li class="sign1">
                     <a class="nav-link" href="http://127.0.0.1:8000/sign-in/login/">Sign in</a>
                 </li>
-                <li  class="sign">
+                <li class="sign">
                     <a class="nav-link" href="{% url 'sign_up' %}">Sign up</a>
                 </li>
+                {% endif %}
             </ul>
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>

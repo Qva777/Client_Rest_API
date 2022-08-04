@@ -10,7 +10,9 @@ class ManagerListSerializers(serializers.ModelSerializer):
 
 
 class ManagerDetailSerializers(serializers.ModelSerializer):
+    """Приминить сериализацию для всех моделей"""
     # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    age = serializers.IntegerField(default=12)
 
     class Meta:
         model = Manager
