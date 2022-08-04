@@ -17,6 +17,5 @@ class TaskAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'task')
     search_fields = ('task',)
 
-
 # admin.site.register(Task) #TaskAdmin)
 # admin.site.register(Manager, ManagerAdmin)

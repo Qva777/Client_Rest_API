@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'client',
 
 ]
-######
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 5,
@@ -161,9 +161,9 @@ SIMPLE_JWT = {
     'JWK_URL': None,
     'LEEWAY': 0,
 
-    'AUTH_HEADER_TYPES': ('Bearer',),   # Заголовок перед токеном в заголовке запроса
+    'AUTH_HEADER_TYPES': ('Bearer',),  # Заголовок перед токеном в заголовке запроса
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'USER_ID_FIELD': 'id',              # Идентификатор пользователя
+    'USER_ID_FIELD': 'id',  # Идентификатор пользователя
     'USER_ID_CLAIM': 'user_id',
     'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
 
@@ -177,6 +177,3 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
-
-
-

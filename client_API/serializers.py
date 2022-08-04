@@ -11,10 +11,17 @@ class ManagerListSerializers(serializers.ModelSerializer):
 
 class ManagerDetailSerializers(serializers.ModelSerializer):
     """Приминить сериализацию для всех моделей"""
+
     # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    age = serializers.IntegerField(default=12)
+    # age = serializers.IntegerField(default=12, initial=12)
+    # age = serializers.SerializerMethodField()
+    #
+    # def get_age(self, obj):
+    #     # self.initial = 12
+    #     print(self, obj)
+    #     return 12
 
     class Meta:
         model = Manager
         fields = '__all__'
-
+        # fields = ('age', )

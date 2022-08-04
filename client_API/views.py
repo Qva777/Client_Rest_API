@@ -31,4 +31,4 @@ class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Информация про определенную задачу"""
     serializer_class = ManagerDetailSerializers
     queryset = Manager.objects.all()
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticated,)
