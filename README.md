@@ -4,9 +4,9 @@
 `python -m venv venv`
 
 <h4>2 - Activate it:</h4><br> 
-+ `cd venv`
-+ `cd Scripts`
-+ `activate`
+- `cd venv`
+- `cd Scripts`
+- `activate`
 
 <h4>3 - In the Console, go to the root folder:</h4><br>
 `cd ../..`
