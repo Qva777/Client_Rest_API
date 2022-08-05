@@ -1,4 +1,4 @@
-<h1>👋How to install: </h1>
+<h1>📍How to install: </h1>
 <h4>1 - Connect venv:</h4> 
 <i>python -m venv venv</i>
 <h4>2 - Activate it:</h4> 
