@@ -18,7 +18,7 @@
 <h4>7 - Run server:</h4> 
 <i>python manage.py runserver</i>
 
-<h1>✉How to connect Postman: </h1>
+<h1>📮How to connect Postman: </h1>
 <h4>1 - Import Postman_Client folder into Postman</h4> 
 <h4>2 - The environment settings are called Info</h4>
 <h4>3 - The Client_API collection contains requests</h4>
