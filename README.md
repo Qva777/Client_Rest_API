@@ -11,9 +11,14 @@
 <i>cd ../..</i>
 <h4>4 - Install libraries:</h4>
 <i>pip install -r requirements.txt</i>
-<h4>5 - Apply migration:</h4> 
+<h4>5 - Run the migration:</h4> 
+<i>python manage.py makemigrations</i>
+<h4>6 - Apply migration:</h4> 
 <i>python manage.py migrate</i>
-<h4>6 - Create Superuser:</h4> 
-<i>python manage.py createsuperuser</i>
 <h4>7 - Run server:</h4> 
 <i>python manage.py runserver</i>
+
+<h1>✉How to connect Postman: </h1>
+<h4>1 - Import Postman_Client folder into Postman</h4> 
+<h4>2 - The environment settings are called Info</h4>
+<h4>3 - The Client_API collection contains requests</h4>
