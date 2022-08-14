@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>{% block title %}{% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="../../client/static/client/images/favicon.png">
-    <link rel="stylesheet" href="../client/static/client/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="client_frontend/static/client_frontend/images/favicon.png">
+    <link rel="stylesheet" href="client_frontend/static/client_frontend/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
@@ -21,22 +21,22 @@
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                     <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
-                    <a href="http://127.0.0.1:8000/api/create/"><h3>Create</h3></a>
+                    <a href="http://127.0.0.1:8000/api/create-task/"><h3>Create</h3></a>
                     <p class="lead mb-0">Create new task for client</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                     <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
-                    <a href="{% url 'sign_up' %}"><h3>Sign up</h3></a>
-                    <p class="lead mb-0">Enter your information</p>
+                    <a href="http://127.0.0.1:8000/api/all-tasks/"><h3>Info</h3></a>
+                    <p class="lead mb-0">Look at all Lists</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="features-icons-item mx-auto mb-0 mb-lg-3">
                     <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
-                    <a href="http://127.0.0.1:8000/api/all/"><h3>API</h3></a>
-                    <p class="lead mb-0">Look at all list</p>
+                    <a href="http://127.0.0.1:8000/api/all-managers/"><h3>API</h3></a>
+                    <p class="lead mb-0">Look at all Managers</p>
                 </div>
             </div>
         </div>
@@ -44,6 +44,6 @@
 </section>
 {% endblock %}
 
-<!--<script src="client/static/client/js/scripts.js"></script>-->
+<!--<script src="client_frontend/static/client_frontend/js/scripts.js"></script>-->
 </body>
 </html>

@@ -4,18 +4,17 @@ from .models import Manager, Task
 
 @admin.register(Manager)
 class ManagerAdmin(admin.ModelAdmin):
-    """Вывод полей в админке"""
-    list_display = ('name', 'last_name', 'email', 'content', 'created_at', 'updated_at')
-    list_display_links = ('name', 'last_name', 'email',)
+    """Регистрация Модели Менеджера в админке, вывод полей"""
+    list_display = ('first_name', 'last_name', 'email', 'created_at', 'updated_at')
+    list_display_links = ('first_name', 'last_name', 'email',)
     search_fields = ('last_name', 'email', 'created_at')
     save_on_top = True
 
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('id', 'task', 'created_at', 'updated_at')
-    list_display_links = ('id', 'task')
-    search_fields = ('task',)
-
-# admin.site.register(Task) #TaskAdmin)
-# admin.site.register(Manager, ManagerAdmin)
+    """Регистрация Модели Заданий в админке, вывод полей"""
+    list_display = ('id', 'name_task', 'status', 'created_at', 'updated_at')
+    list_display_links = ('id', 'name_task')
+    search_fields = ('name_task',)
+    save_on_top = True

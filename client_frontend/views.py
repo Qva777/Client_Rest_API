@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 def index(request):
     """Функция возвращает "главную" страницу"""
-    return render(request, r'client/index.html')
+    return render(request, r'client_frontend/index.html')
 
 
 def sign_up(request):
@@ -16,14 +16,14 @@ def sign_up(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'client/sign_up.html', {'form': form})
+    return render(request, 'client_frontend/sign_up.html', {'form': form})
 
 
 def about(request):
     """Функция возвращает "про нас" страницу"""
-    return render(request, 'client/about.html')
+    return render(request, 'client_frontend/about.html')
 
 
 def profile(request):
     """Функция возвращает профиль страницу"""
-    return render(request, 'client/profile.html')
+    return render(request, 'client_frontend/profile.html')

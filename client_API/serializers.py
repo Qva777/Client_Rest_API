@@ -1,27 +1,52 @@
 from rest_framework import serializers
-from .models import Manager
+from .models import Manager, Task
 
 
 class ManagerListSerializers(serializers.ModelSerializer):
+    """Вывод полей в список всех менеджеров"""
     class Meta:
-        """Выводит в API список из перечисленых значений"""
         model = Manager
-        fields = ('name', 'last_name', 'email', 'password', 'content', 'created_at', 'updated_at')
+        fields = ('id', 'first_name', 'last_name', 'username', 'email', 'password', 'created_at', 'updated_at')
 
 
 class ManagerDetailSerializers(serializers.ModelSerializer):
-    """Приминить сериализацию для всех моделей"""
-
-    # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    # age = serializers.IntegerField(default=12, initial=12)
-    # age = serializers.SerializerMethodField()
-    #
-    # def get_age(self, obj):
-    #     # self.initial = 12
-    #     print(self, obj)
-    #     return 12
+    """Вывод полей в список определенного менеджера"""
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         model = Manager
+        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'tasks']
+        # depth = 1
+
+    def create(self, validated_data):
+        """Хэширование пароля при создании"""
+        user = super().create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+    def update(self, instance, validated_data):
+        """Хэширование пароля при обновлении"""
+        user = super().update(instance, validated_data)
+        try:
+            user.set_password(validated_data['password'])
+            user.save()
+        except KeyError:
+            pass
+        return user
+
+
+class TaskListSerializers(serializers.ModelSerializer):
+    """Вывод полей в список всех задач"""
+    class Meta:
+        model = Task
+        fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at')
+        # depth = 1
+
+
+class TaskDetailSerializers(serializers.ModelSerializer):
+    """Вывод полей в список определенного задания"""
+    class Meta:
+        model = Task
         fields = '__all__'
-        # fields = ('age', )
+        # depth = 1

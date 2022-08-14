@@ -1,4 +1,4 @@
-"""Client_Rest URL Configuration
+"""Client_Rest_config URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -20,13 +20,15 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 urlpatterns = [
     # APP
     path('admin/', admin.site.urls),
-    path('', include("client.urls")),
+    path('', include("client_frontend.urls")),
     path('api/', include("client_API.urls")),
     path('sign-in/', include('rest_framework.urls'), name='sign_in'),
 
-    # DJOSER TOKEN
-    path('auth/', include('djoser.urls')),
-    re_path('^auth-token/', include('djoser.urls.authtoken')),
+    # # DJOSER TOKEN
+    # path('auth/', include('djoser.urls')),
+    # re_path('^auth-token/', include('djoser.urls.authtoken')),
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.jwt')),
 
     # JWT TOKEN
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
