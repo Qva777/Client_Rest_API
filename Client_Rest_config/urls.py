@@ -28,7 +28,7 @@ urlpatterns = [
     # path('auth/', include('djoser.urls')),
     # re_path('^auth-token/', include('djoser.urls.authtoken')),
     path('api/auth/', include('djoser.urls')),
-    path('api/auth/', include('djoser.urls.jwt')),
+    path('api/auth/jwt', include('djoser.urls.jwt')),
 
     # JWT TOKEN
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

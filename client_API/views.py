@@ -3,7 +3,8 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from .permissions import IsOwnerOrReadOnly
-from .serializers import ManagerDetailSerializers, ManagerListSerializers, TaskListSerializers, TaskDetailSerializers
+from .serializers import ManagerDetailSerializers, ManagerListSerializers, TaskListSerializers, TaskDetailSerializers, \
+    ManagerUpdateSerializers
 from .models import Manager, Task
 
 
@@ -36,12 +37,18 @@ class ManagerDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
 
 
+class ManagerDetailViewUpdate(generics.RetrieveUpdateDestroyAPIView):
+    """Обновление определенной задачи"""
+    queryset = Manager.objects.all()
+    serializer_class = ManagerUpdateSerializers
+    permission_classes = (IsAuthenticated,)
+
+
 class ManagerListView(generics.ListAPIView):
     """Информация про все задачи"""
     serializer_class = ManagerListSerializers
     queryset = Manager.objects.all()
     permission_classes = (IsOwnerOrReadOnly,)
-
 
 # class APIListPagination(PageNumberPagination):
 #     """Пагинация"""

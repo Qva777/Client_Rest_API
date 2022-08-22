@@ -3,19 +3,18 @@ from django.db import models
 from django.utils.http import urlquote
 
 
+class TaskStatus(models.TextChoices):
+    """Статусы для таблицы задач"""
+    CREATED = (1, "Created")
+    IN_PROGRESS = (2, "In_progress")
+    COMPLETED = (3, "Completed")
+
+
 class Task(models.Model):
     """Модели/поля таблицы задач"""
     name_task = models.CharField(verbose_name='Название Задачи', max_length=64, blank=False, unique=True, )
     description = models.CharField(verbose_name='Описание Задачи', max_length=255, blank=False)
-    Crated = 'CR'
-    In_progress = 'PR'
-    Completed = 'CP'
-    STATUS = [
-        (Crated, 'Crated'),
-        (In_progress, 'In progress'),
-        (Completed, 'Completed'),
-    ]
-    status = models.CharField(max_length=2, choices=STATUS, default=Crated, blank=False)
+    status = models.CharField(max_length=2, choices=TaskStatus.choices, default=TaskStatus.CREATED, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации зписи', blank=False)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')
 
@@ -29,7 +28,6 @@ class Task(models.Model):
 
 
 class CustomManager(models.Manager):
-
     def get_absolute_url(self):
         return "/u/%s/" % urlquote(self.username)
 
@@ -75,7 +73,6 @@ class CustomManager(models.Manager):
     @classmethod
     def normalize_email(cls, email):
         """Валидация email"""
-        # email = email or ''
         if email is None:
             return email
 
@@ -88,6 +85,9 @@ class CustomManager(models.Manager):
         return email
 
     def get_by_natural_key(self, username):
+        """Метод Django для получения типа задания для заданного естественного ключа
+           Регистрация через username
+        """
         return self.get(username=username)
 
 
@@ -98,7 +98,7 @@ class Manager(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(verbose_name='Фамилия', max_length=64, blank=False)
     email = models.EmailField(verbose_name='Email', db_index=True, null=True, unique=True, )
     password = models.CharField(verbose_name='Пароль', max_length=20, blank=False)
-    created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата присоеденения', blank=False)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата присоеденения', blank=False)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')
     is_staff = models.BooleanField(default=False)
     tasks = models.ManyToManyField(Task, verbose_name='Задание Менеджера', blank=True)
@@ -111,6 +111,7 @@ class Manager(AbstractBaseUser, PermissionsMixin):
         return self.username
 
     def natural_key(self):
+        """Авторизация через username"""
         return self.username
 
     def __str__(self):

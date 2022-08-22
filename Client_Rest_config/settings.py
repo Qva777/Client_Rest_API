@@ -59,8 +59,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
-# Аутентификация пользователя
-AUTH_USER_MODEL = 'client_API.Manager'  ################################
+"""
+Переопределение пользовательской модели по умолчанию
+Аутентификация пользователя
+"""
+AUTH_USER_MODEL = 'client_API.Manager'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,7 +92,7 @@ TEMPLATES = [
         },
     },
 ]
-
+"""Встроенный сервер Django, а именно runserver команда, считывает его из WSGI_APPLICATION настройки."""
 WSGI_APPLICATION = 'Client_Rest_config.wsgi.application'
 
 # Database

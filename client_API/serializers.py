@@ -3,20 +3,27 @@ from .models import Manager, Task
 
 
 class ManagerListSerializers(serializers.ModelSerializer):
-    """Вывод полей в список всех менеджеров"""
+    """Вывод полей всех менеджеров"""
     class Meta:
         model = Manager
         fields = ('id', 'first_name', 'last_name', 'username', 'email', 'password', 'created_at', 'updated_at')
 
 
 class ManagerDetailSerializers(serializers.ModelSerializer):
-    """Вывод полей в список определенного менеджера"""
+    """Вывод полей определенного менеджера"""
+    class Meta:
+        model = Manager
+        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'password', 'created_at', 'updated_at', 'tasks']
+        depth = 1
+
+
+class ManagerUpdateSerializers(serializers.ModelSerializer):
+    """Обновление полей определенного менеджера"""
     password = serializers.CharField(write_only=True)
 
     class Meta:
         model = Manager
         fields = ['username', 'first_name', 'last_name', 'email', 'password', 'tasks']
-        # depth = 1
 
     def create(self, validated_data):
         """Хэширование пароля при создании"""
