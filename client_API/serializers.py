@@ -44,7 +44,7 @@ class ManagerUpdateSerializers(serializers.ModelSerializer):
 
 
 class TaskListSerializers(serializers.ModelSerializer):
-    """Вывод полей в список всех задач"""
+    """Вывод полей всех задач"""
     class Meta:
         model = Task
         fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at')
@@ -52,7 +52,15 @@ class TaskListSerializers(serializers.ModelSerializer):
 
 
 class TaskDetailSerializers(serializers.ModelSerializer):
-    """Вывод полей в список определенного задания"""
+    """Вывод полей определенного задания"""
+    class Meta:
+        model = Task
+        fields = '__all__'
+        # depth = 1
+
+
+class TaskCreateSerializers(serializers.ModelSerializer):
+    """Вывод полей определенного задания"""
     class Meta:
         model = Task
         fields = '__all__'

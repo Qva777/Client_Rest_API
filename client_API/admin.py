@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Manager, Task
+from .models import Manager, Task, ManagerTask
 
 
 @admin.register(Manager)
@@ -18,3 +18,9 @@ class TaskAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'name_task')
     search_fields = ('name_task',)
     save_on_top = True
+
+
+admin.site.register(ManagerTask)
+# class ManagerTaskAdmin(admin.ModelAdmin):
+    # """  """
+    # list_display = ('name',)
