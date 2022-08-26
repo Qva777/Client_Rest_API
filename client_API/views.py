@@ -1,11 +1,21 @@
 # from rest_framework.pagination import PageNumberPagination
-from rest_framework import generics
+
+from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from .permissions import IsOwnerOrReadOnly
-from .serializers import ManagerDetailSerializers, ManagerListSerializers, TaskListSerializers, TaskDetailSerializers, \
-    ManagerUpdateSerializers, TaskCreateSerializers
+# from . import serializers
 from .models import Manager, Task
+
+from .permissions import IsOwnerOrReadOnly
+from .serializers import (
+    ManagerDetailSerializers,
+    ManagerListSerializers,
+    ManagerUpdateSerializers,
+
+    TaskCreateSerializers,
+    TaskListSerializers,
+    TaskDetailSerializers,
+)
 
 
 # class Task
@@ -32,11 +42,6 @@ class TaskListView(generics.ListAPIView):
 
 
 # Class Managers
-# class ManagerDetailView(generics.RetrieveUpdateDestroyAPIView):
-#     """Информация про определенную задачу"""
-#     queryset = Manager.objects.all()
-#     serializer_class = ManagerDetailSerializers
-#     permission_classes = (IsAuthenticated,)
 class ManagerDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Информация про определенную задачу"""
     queryset = Manager.objects.all()
@@ -56,6 +61,19 @@ class ManagerListView(generics.ListAPIView):
     serializer_class = ManagerListSerializers
     queryset = Manager.objects.all()
     permission_classes = (IsOwnerOrReadOnly,)
+
+# VIEWSETS
+# class ManagersViewSet(viewsets.ReadOnlyModelViewSet):
+#     """Вывод вью сэтов"""
+#     queryset = Manager.objects.all()
+#
+#     def get_serializer_class(self):
+#         if self.action == 'list':
+#             return ManagerDetailSerializers
+#         elif self.action == 'retrieve':
+#             return ManagerUpdateSerializers
+# return ManagerDetailSerializers
+
 
 # class APIListPagination(PageNumberPagination):
 #     """Пагинация"""

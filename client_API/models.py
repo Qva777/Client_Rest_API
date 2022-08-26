@@ -121,8 +121,3 @@ class Manager(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
-
-
-# class ManagerTask(Task):
-    # objects = Manager()
-    # tasks = models.ManyToManyField(Manager, verbose_name='Задание Менеджера', blank=True)
