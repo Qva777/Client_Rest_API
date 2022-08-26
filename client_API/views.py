@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from .permissions import IsOwnerOrReadOnly
 from .serializers import ManagerDetailSerializers, ManagerListSerializers, TaskListSerializers, TaskDetailSerializers, \
     ManagerUpdateSerializers, TaskCreateSerializers
-from .models import Manager, Task, ManagerTask
+from .models import Manager, Task
 
 
 # class Task
@@ -18,8 +18,8 @@ class TaskCreateView(generics.CreateAPIView):
 class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Информация про определенную задачу"""
     serializer_class = TaskDetailSerializers
-    # queryset = Task.objects.all()
-    queryset = ManagerTask.objects.all()
+    queryset = Task.objects.all()
+    # queryset = ManagerTask.objects.all()
 
     permission_classes = (IsAuthenticated,)
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Manager, Task, ManagerTask
+from .models import Manager, Task
 
 
 @admin.register(Manager)
@@ -20,7 +20,7 @@ class TaskAdmin(admin.ModelAdmin):
     save_on_top = True
 
 
-admin.site.register(ManagerTask)
+# admin.site.register(ManagerTask)
 # class ManagerTaskAdmin(admin.ModelAdmin):
     # """  """
     # list_display = ('name',)

@@ -101,7 +101,7 @@ class Manager(AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата присоеденения', blank=False)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')
     is_staff = models.BooleanField(default=False)
-    # tasks = models.ManyToManyField(Task, verbose_name='Задание Менеджера', blank=True)
+    tasks = models.ManyToManyField(Task, verbose_name='Задание Менеджера', related_name="managers", blank=True)
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
     objects = CustomManager()
@@ -123,6 +123,6 @@ class Manager(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'Клиенты'
 
 
-class ManagerTask(models.Model):
-    objects = Manager()
-    tasks = models.ManyToManyField(Task, verbose_name='Задание Менеджера', blank=True)
+# class ManagerTask(Task):
+    # objects = Manager()
+    # tasks = models.ManyToManyField(Manager, verbose_name='Задание Менеджера', blank=True)
