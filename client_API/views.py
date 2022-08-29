@@ -7,16 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Manager, Task
 
 from .permissions import IsOwnerOrReadOnly
-from .serializers import (
-    ManagerDetailSerializers,
-    ManagerListSerializers,
-    ManagerUpdateSerializers,
-
-    TaskCreateSerializers,
-    TaskListSerializers,
-    TaskDetailSerializers,
-)
-
+from client_API.serializers import *
 
 
 

@@ -1,4 +1,5 @@
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, User
+from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, User, UserManager
 from django.db import models
 from django.utils.http import urlquote
 
@@ -27,7 +28,7 @@ class Task(models.Model):
         verbose_name_plural = 'Задачи'
 
 
-class CustomManager(models.Manager):
+class CustomManager(UserManager):
     def _create_user(self, username, email, password, **extra_fields):
         """Создает и сохраняет пользователя с указанным именем, адресом электронной почты и паролем"""
         if not username:
