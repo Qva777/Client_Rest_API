@@ -1,7 +1,5 @@
-from django.contrib.auth.base_user import BaseUserManager
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, User, UserManager
+from django.contrib.auth.models import UserManager, AbstractUser
 from django.db import models
-from django.utils.http import urlquote
 
 
 class TaskStatus(models.TextChoices):
@@ -18,6 +16,7 @@ class Task(models.Model):
     status = models.CharField(max_length=2, choices=TaskStatus.choices, default=TaskStatus.CREATED, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации зписи', blank=False)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')
+    manager = models.ManyToManyField("Manager", verbose_name='Задание пренадлежит Менеджеру', related_name="managers", blank=True)
 
     def __str__(self):
         """Строковое представление"""
@@ -39,44 +38,8 @@ class CustomManager(UserManager):
         user.save(using=self._db)
         return user
 
-    # def create_user(self, username, email=None, password=None, **extra_fields):
-    #     extra_fields.setdefault('is_staff', False)
-    #     extra_fields.setdefault('is_superuser', False)
-    #     return self._create_user(username, email, password, **extra_fields)
 
-    # def create_superuser(self, username, email, password, **extra_fields):
-    #     extra_fields.setdefault('is_staff', True)
-    #     extra_fields.setdefault('is_superuser', True)
-    #
-    #     if extra_fields.get('is_staff') is not True:
-    #         raise ValueError('Superuser must have is_staff=True.')
-    #     if extra_fields.get('is_superuser') is not True:
-    #         raise ValueError('Superuser must have is_superuser=True.')
-    #
-    #     return self._create_user(username, email, password, **extra_fields)
-
-    # @classmethod
-    # def normalize_email(cls, email):
-    #     """Валидация email"""
-    #     if email is None:
-    #         return email
-    #
-    #     try:
-    #         email_name, domain_part = email.strip().rsplit('@', 1)
-    #     except ValueError:
-    #         pass
-    #     else:
-    #         email = '@'.join([email_name, domain_part.lower()])
-    #     return email
-    #
-    # def get_by_natural_key(self, username):
-    #     """Метод Django для получения типа задания для заданного естественного ключа
-    #        Регистрация через username
-    #     """
-    #     return self.get(username=username)
-
-
-class Manager(AbstractBaseUser, PermissionsMixin):
+class Manager(AbstractUser):
     """Модели/поля таблицы менеджера"""
     username = models.CharField(verbose_name='Псевдоним', db_index=True, unique=True, max_length=64, blank=False)
     first_name = models.CharField(verbose_name='Имя', max_length=64, blank=False)
@@ -86,7 +49,7 @@ class Manager(AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата присоеденения', blank=False)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')
     is_staff = models.BooleanField(default=False)
-    tasks = models.ManyToManyField(Task, verbose_name='Задание Менеджера', related_name="managers", blank=True)
+    tasks = models.ManyToManyField(Task, verbose_name='Задание Менеджера',  related_name="managers", blank=True)
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
     objects = CustomManager()

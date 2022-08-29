@@ -7,7 +7,7 @@ class ManagerListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Manager
-        fields = ('id', 'first_name', 'last_name', 'username', 'email', 'password', 'created_at', 'updated_at')
+        fields = ('id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at')
 
 
 class ManagerDetailSerializers(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class ManagerDetailSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Manager
-        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'password', 'created_at', 'updated_at', 'tasks']
+        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at', 'tasks']
         depth = 1
 
 
@@ -28,12 +28,12 @@ class ManagerUpdateSerializers(serializers.ModelSerializer):
         model = Manager
         fields = ['username', 'first_name', 'last_name', 'email', 'password', 'tasks']
 
-    def create(self, validated_data):
-        """Хэширование пароля при создании"""
-        user = super().create(validated_data)
-        user.set_password(validated_data['password'])
-        user.save()
-        return user
+    # def create(self, validated_data):
+    #     """Хэширование пароля при создании"""
+    #     user = super().create(validated_data)
+    #     user.set_password(validated_data['password'])
+    #     user.save()
+    #     return user
 
     def update(self, instance, validated_data):
         """Хэширование пароля при обновлении"""
@@ -48,6 +48,7 @@ class ManagerUpdateSerializers(serializers.ModelSerializer):
 
 class TaskListSerializers(serializers.ModelSerializer):
     """Вывод полей всех задач"""
+    managers = ManagerListSerializers(read_only=True, many=True)
 
     class Meta:
         model = Task
