@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'client_API',
     'client_frontend',
-    'rest_framework_swagger',
+    # 'rest_framework_swagger',
     'djoser',
 ]
 

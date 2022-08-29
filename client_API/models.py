@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, User
 from django.db import models
 from django.utils.http import urlquote
 
@@ -28,22 +28,6 @@ class Task(models.Model):
 
 
 class CustomManager(models.Manager):
-    def get_absolute_url(self):
-        return "/u/%s/" % urlquote(self.username)
-
-    def get_username(self):
-        """Возвращает имя пользователя"""
-        return self.username
-
-    def get_full_name(self):
-        """Возвращает имя и фамилию"""
-        full_name = '%s %s' % (self.first_name, self.last_name)
-        return full_name.strip()
-
-    def get_short_name(self):
-        """Возвращает только имя"""
-        return self.first_name
-
     def _create_user(self, username, email, password, **extra_fields):
         """Создает и сохраняет пользователя с указанным именем, адресом электронной почты и паролем"""
         if not username:
@@ -54,41 +38,41 @@ class CustomManager(models.Manager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, username, email=None, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', False)
-        extra_fields.setdefault('is_superuser', False)
-        return self._create_user(username, email, password, **extra_fields)
+    # def create_user(self, username, email=None, password=None, **extra_fields):
+    #     extra_fields.setdefault('is_staff', False)
+    #     extra_fields.setdefault('is_superuser', False)
+    #     return self._create_user(username, email, password, **extra_fields)
 
-    def create_superuser(self, username, email, password, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
+    # def create_superuser(self, username, email, password, **extra_fields):
+    #     extra_fields.setdefault('is_staff', True)
+    #     extra_fields.setdefault('is_superuser', True)
+    #
+    #     if extra_fields.get('is_staff') is not True:
+    #         raise ValueError('Superuser must have is_staff=True.')
+    #     if extra_fields.get('is_superuser') is not True:
+    #         raise ValueError('Superuser must have is_superuser=True.')
+    #
+    #     return self._create_user(username, email, password, **extra_fields)
 
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser must have is_staff=True.')
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser must have is_superuser=True.')
-
-        return self._create_user(username, email, password, **extra_fields)
-
-    @classmethod
-    def normalize_email(cls, email):
-        """Валидация email"""
-        if email is None:
-            return email
-
-        try:
-            email_name, domain_part = email.strip().rsplit('@', 1)
-        except ValueError:
-            pass
-        else:
-            email = '@'.join([email_name, domain_part.lower()])
-        return email
-
-    def get_by_natural_key(self, username):
-        """Метод Django для получения типа задания для заданного естественного ключа
-           Регистрация через username
-        """
-        return self.get(username=username)
+    # @classmethod
+    # def normalize_email(cls, email):
+    #     """Валидация email"""
+    #     if email is None:
+    #         return email
+    #
+    #     try:
+    #         email_name, domain_part = email.strip().rsplit('@', 1)
+    #     except ValueError:
+    #         pass
+    #     else:
+    #         email = '@'.join([email_name, domain_part.lower()])
+    #     return email
+    #
+    # def get_by_natural_key(self, username):
+    #     """Метод Django для получения типа задания для заданного естественного ключа
+    #        Регистрация через username
+    #     """
+    #     return self.get(username=username)
 
 
 class Manager(AbstractBaseUser, PermissionsMixin):
