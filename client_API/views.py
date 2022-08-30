@@ -4,21 +4,10 @@ from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
 
 # from . import serializers
-from .models import Manager, Task
+# from .models import Manager, Task
 
 from .permissions import IsOwnerOrReadOnly
-from client_API.serializers import (
-    ManagerDetailSerializers,
-    ManagerListSerializers,
-    ManagerUpdateSerializers,
-
-    TaskCreateSerializers,
-    TaskListSerializers,
-    TaskDetailSerializers,
-)
-
-
-
+from client_API.serializers import *
 
 
 # class Task

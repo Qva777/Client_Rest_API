@@ -10,14 +10,6 @@ class ManagerListSerializers(serializers.ModelSerializer):
         fields = ('id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at', 'tasks')
 
 
-class ManagerDetailSerializers(serializers.ModelSerializer):
-    """Вывод полей определенного менеджера"""
-
-    class Meta:
-        model = Manager
-        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at', 'tasks']
-        depth = 1
-
 class ManagerUpdateSerializers(serializers.ModelSerializer):
     """Обновление полей определенного менеджера"""
     password = serializers.CharField(write_only=True)
@@ -26,13 +18,6 @@ class ManagerUpdateSerializers(serializers.ModelSerializer):
     class Meta:
         model = Manager
         fields = ['username', 'first_name', 'last_name', 'email', 'password', 'tasks']
-
-    # def create(self, validated_data):
-    #     """Хэширование пароля при создании"""
-    #     user = super().create(validated_data)
-    #     user.set_password(validated_data['password'])
-    #     user.save()
-    #     return user
 
     def update(self, instance, validated_data):
         """Хэширование пароля при обновлении"""
@@ -47,29 +32,37 @@ class ManagerUpdateSerializers(serializers.ModelSerializer):
 
 class TaskListSerializers(serializers.ModelSerializer):
     """Вывод полей всех задач"""
-    managers = ManagerListSerializers(read_only=True, many=True)
+
+    # managers = ManagerListSerializers(read_only=True, many=True) # детали менеджера
 
     class Meta:
         model = Task
         fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
-        # depth = 1
 
 
 class TaskDetailSerializers(serializers.ModelSerializer):
     """Вывод полей определенного задания"""
-    managers = ManagerListSerializers(read_only=True, many=True)
+    managers = ManagerListSerializers(read_only=True, many=True)  # детали менеджера
 
     class Meta:
         model = Task
         fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
-        # depth = 1
 
 
 class TaskCreateSerializers(serializers.ModelSerializer):
     """Вывод полей содания задания"""
     managers = serializers.PrimaryKeyRelatedField(queryset=Manager.objects.all(), many=True)
+
     class Meta:
         model = Task
         fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
         # fields = '__all__'
-        # depth = 1
+
+
+class ManagerDetailSerializers(serializers.ModelSerializer):
+    """Вывод полей определенного менеджера"""
+    tasks = TaskCreateSerializers(read_only=True, many=True)
+
+    class Meta:
+        model = Manager
+        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at', 'tasks']
