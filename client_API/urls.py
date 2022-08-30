@@ -16,7 +16,6 @@ urlpatterns = format_suffix_patterns([
 
     path('manager/<int:pk>/', ManagerDetailView.as_view(), name='manager_detail'),
     path('manager/put/<int:pk>/', ManagerDetailViewUpdate.as_view(), name='manager_detail_update'),
-
     # viewsSets
     # path('all-managers/', views.ManagersViewSet.as_view({"get": "list"})),
     # path('manager/<int:pk>/', views.ManagersViewSet.as_view({"put": "retrieve"}), name='manager_detail'),

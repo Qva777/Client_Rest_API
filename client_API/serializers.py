@@ -7,7 +7,7 @@ class ManagerListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Manager
-        fields = ('id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at')
+        fields = ('id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at', 'tasks')
 
 
 class ManagerDetailSerializers(serializers.ModelSerializer):
@@ -17,7 +17,6 @@ class ManagerDetailSerializers(serializers.ModelSerializer):
         model = Manager
         fields = ['id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at', 'tasks']
         depth = 1
-
 
 class ManagerUpdateSerializers(serializers.ModelSerializer):
     """Обновление полей определенного менеджера"""
@@ -52,7 +51,7 @@ class TaskListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at')
+        fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
         # depth = 1
 
 
@@ -68,8 +67,9 @@ class TaskDetailSerializers(serializers.ModelSerializer):
 
 class TaskCreateSerializers(serializers.ModelSerializer):
     """Вывод полей содания задания"""
-
+    managers = serializers.PrimaryKeyRelatedField(queryset=Manager.objects.all(), many=True)
     class Meta:
         model = Task
-        fields = '__all__'
+        fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
+        # fields = '__all__'
         # depth = 1

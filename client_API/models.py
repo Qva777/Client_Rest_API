@@ -5,7 +5,7 @@ from django.db import models
 class TaskStatus(models.TextChoices):
     """Статусы для таблицы задач"""
     CREATED = (1, "Created")
-    IN_PROGRESS = (2, "In_progress")
+    IN_PROGRESS = (2, "In Progress")
     COMPLETED = (3, "Completed")
 
 
@@ -16,7 +16,7 @@ class Task(models.Model):
     status = models.CharField(max_length=2, choices=TaskStatus.choices, default=TaskStatus.CREATED, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации зписи', blank=False)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')
-    manager = models.ManyToManyField("Manager", verbose_name='Задание пренадлежит Менеджеру', related_name="managers", blank=True)
+    # manager = models.ManyToManyField("Manager", verbose_name='Задание пренадлежит Менеджеру', related_name="managers", blank=True)
 
     def __str__(self):
         """Строковое представление"""
@@ -69,3 +69,6 @@ class Manager(AbstractUser):
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
+
+# class BelongsTo(Manager, Task):
+#     belong = models.ManyToManyField(Task, verbose_name='Задание Менеджера',  related_name="managers", blank=True)
