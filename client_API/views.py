@@ -16,48 +16,48 @@ from rest_framework.response import Response
 
 
 # class Task
-# class TaskCreateView(generics.CreateAPIView):
-#     """Создание задачи"""
-#     serializer_class = TaskCreateSerializers
-#     # permission_classes = (IsAuthenticated,)
-#
-#
-# class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
-#     """Информация про определенную задачу"""
-#     serializer_class = TaskDetailSerializers
-#     queryset = Task.objects.all()
-#     # queryset = ManagerTask.objects.all()
-#
-#     permission_classes = (IsAuthenticated,)
-#
-#
-# class TaskListView(generics.ListAPIView):
-#     """Информация про все задачи"""
-#     serializer_class = TaskListSerializers
-#     queryset = Task.objects.all()
-#     permission_classes = (IsOwnerOrReadOnly,)
+class TaskCreateView(generics.CreateAPIView):
+    """Создание задачи"""
+    serializer_class = TaskCreateSerializers
+    # permission_classes = (IsAuthenticated,)
+
+
+class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """Информация про определенную задачу"""
+    serializer_class = TaskDetailSerializers
+    queryset = Task.objects.all()
+    # queryset = ManagerTask.objects.all()
+
+    permission_classes = (IsAuthenticated,)
+
+
+class TaskListView(generics.ListAPIView):
+    """Информация про все задачи"""
+    serializer_class = TaskListSerializers
+    queryset = Task.objects.all()
+    permission_classes = (IsOwnerOrReadOnly,)
 
 
 # Class Managers
-# class ManagerDetailView(generics.RetrieveUpdateDestroyAPIView):
-#     """Информация про определенную задачу"""
-#     queryset = Manager.objects.all()
-#     serializer_class = ManagerDetailSerializers
-#     permission_classes = (IsAuthenticated,)
-# #
+class ManagerDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """Информация про определенную задачу"""
+    queryset = Manager.objects.all()
+    serializer_class = ManagerDetailSerializers
+    permission_classes = (IsAuthenticated,)
 #
+
 # class ManagerDetailViewUpdate(generics.RetrieveUpdateDestroyAPIView):
 #     """Обновление определенной задачи"""
 #     queryset = Manager.objects.all()
 #     serializer_class = ManagerUpdateSerializers
 #     permission_classes = (IsAuthenticated,)
-#
-#
-# class ManagerListView(generics.ListAPIView):
-#     """Информация про все задачи"""
-#     serializer_class = ManagerListSerializers
-#     queryset = Manager.objects.all()
-#     permission_classes = (IsOwnerOrReadOnly,)
+
+
+class ManagerListView(generics.ListAPIView):
+    """Информация про все задачи"""
+    serializer_class = ManagerListSerializers
+    queryset = Manager.objects.all()
+    permission_classes = (IsOwnerOrReadOnly,)
 
 # VIEWSETS
 # class ManagersViewSet(viewsets.ReadOnlyModelViewSet):
@@ -96,46 +96,50 @@ from rest_framework.response import Response
 #         return Response(serializer.data)
 
 
-class ManagersViewSet(ModelViewSet):
-    # permission_classes = (IsAuthenticated,IsOwnerOrReadOnly)
-    def get_queryset(self):
-        return Manager.objects.all()
+# class ManagersViewSet(ModelViewSet):
+#     # permission_classes = (IsAuthenticated,IsOwnerOrReadOnly)
+#     def get_queryset(self):
+#         return Manager.objects.all()
+#
+#     def get_serializer_class(self):
+#         if self.action in ("list", "retrieve"):
+#             return ManagerListSerializers
+#         return ManagerDetailSerializers
+#
+#     def get_permissions(self):
+#         """
+#         Instantiates and returns the list of permissions that this view requires.
+#         """
+#         if self.action == 'list':
+#             permission_classes = [IsOwnerOrReadOnly]
+#         else:
+#             permission_classes = [IsAuthenticated]
+#         return [permission() for permission in permission_classes]
 
-    def get_serializer_class(self):
-        if self.action in ("list", "retrieve"):
-            return ManagerListSerializers
-        return ManagerDetailSerializers
 
-    def get_permissions(self):
-        """
-        Instantiates and returns the list of permissions that this view requires.
-        """
-        if self.action == 'list':
-            permission_classes = [IsOwnerOrReadOnly]
-        else:
-            permission_classes = [IsAuthenticated]
-        return [permission() for permission in permission_classes]
+# class TaskViewSet(ModelViewSet):
+#
+#     def get_queryset(self):
+#         return Task.objects.all()
+#
+#     def get_serializer_class(self):
+#         if self.action in ("list", "retrieve"):
+#             return TaskListSerializers
+#         return TaskDetailSerializers
+#
+#     def get_permissions(self):
+#         """
+#         Instantiates and returns the list of permissions that this view requires.
+#         """
+#         if self.action == 'list' or self.action == 'create':
+#             permission_classes = [IsOwnerOrReadOnly]
+#         else:
+#             permission_classes = [IsAuthenticated]
+#         return [permission() for permission in permission_classes]
 
 
-class TaskViewSet(ModelViewSet):
 
-    def get_queryset(self):
-        return Task.objects.all()
 
-    def get_serializer_class(self):
-        if self.action in ("list", "retrieve"):
-            return TaskListSerializers
-        return TaskDetailSerializers
-
-    def get_permissions(self):
-        """
-        Instantiates and returns the list of permissions that this view requires.
-        """
-        if self.action == 'list' or self.action == 'create':
-            permission_classes = [IsOwnerOrReadOnly]
-        else:
-            permission_classes = [IsAuthenticated]
-        return [permission() for permission in permission_classes]
 
 # class UserViewSet(viewsets.ViewSet):
 #     """
