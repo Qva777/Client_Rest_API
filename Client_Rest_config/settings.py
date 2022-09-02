@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework',
+    'drf_yasg',
     'client_API',
     'client_frontend',
-    # 'rest_framework_swagger',
     'djoser',
+
 ]
 
 REST_FRAMEWORK = {
@@ -181,3 +182,5 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=10),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+

@@ -13,7 +13,7 @@ class Task(models.Model):
     """Модели/поля таблицы задач"""
     name_task = models.CharField(verbose_name='Название Задачи', max_length=64, blank=False, unique=True, )
     description = models.CharField(verbose_name='Описание Задачи', max_length=255, blank=False)
-    status = models.CharField(max_length=2, choices=TaskStatus.choices, default=TaskStatus.CREATED, blank=False)
+    status = models.CharField(max_length=30, choices=TaskStatus.choices, default=TaskStatus.CREATED, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации зписи', blank=False)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')
 
