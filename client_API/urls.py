@@ -13,4 +13,6 @@ urlpatterns = ([
     # Detail
     path('task/<int:pk>/', TaskDetailView.as_view(), name='task_detail'),
     path('manager/<int:pk>/', ManagerDetailView.as_view(), name='manager_detail'),
+    path('manager/put/<int:pk>/', ManagerUpdateSerializersViews.as_view(), name='manager_update'),
+
 ])

@@ -38,3 +38,10 @@ class ManagerListView(generics.ListAPIView):
     serializer_class = ManagerListSerializers
     queryset = Manager.objects.all()
     permission_classes = (IsOwnerOrReadOnly,)
+
+
+class ManagerUpdateSerializersViews(generics.RetrieveUpdateDestroyAPIView):
+    """Обновление определенного менеджера"""
+    serializer_class = ManagerUpdateSerializers
+    queryset = Manager.objects.all()
+    permission_classes = (IsAuthenticated,)

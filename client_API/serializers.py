@@ -10,6 +10,26 @@ class ManagerListSerializers(serializers.ModelSerializer):
         fields = ('id', 'first_name', 'last_name', 'username', 'email', 'created_at', 'updated_at', 'tasks')
 
 
+class ManagerUpdateSerializers(serializers.ModelSerializer):
+    """Обновление полей определенного менеджера"""
+    password = serializers.CharField(write_only=True)
+    tasks = serializers.PrimaryKeyRelatedField(queryset=Task.objects.all(), many=True)
+
+    class Meta:
+        model = Manager
+        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'tasks']
+
+    def update(self, instance, validated_data):
+        """Хэширование пароля при обновлении"""
+        user = super().update(instance, validated_data)
+        try:
+            user.set_password(validated_data['password'])
+            user.save()
+        except KeyError:
+            pass
+        return user
+
+
 class TaskListSerializers(serializers.ModelSerializer):
     """Вывод полей всех задач"""
     # managers = ManagerListSerializers(read_only=True, many=True) # детали менеджера
@@ -40,20 +60,33 @@ class TaskCreateSerializers(serializers.ModelSerializer):
 
 class ManagerDetailSerializers(serializers.ModelSerializer):
     """Вывод полей определенного менеджера"""
-    # tasks = TaskCreateSerializers(read_only=True, many=True)
-    password = serializers.CharField(write_only=True)
-    tasks = serializers.PrimaryKeyRelatedField(queryset=Task.objects.all(), many=True)
-
+    tasks = TaskCreateSerializers(read_only=True, many=True)
+    # password = serializers.CharField(write_only=True)
+    ####################
+    # tasks = serializers.PrimaryKeyRelatedField(queryset=Task.objects.all(), many=True)
+    # tasks = ManagerListSerializers(read_only=True, many=True)
     class Meta:
         model = Manager
+
         fields = ['username', 'first_name', 'last_name', 'email', 'password', 'tasks']
 
-    def update(self, instance, validated_data):
-        """Хэширование пароля при обновлении"""
-        user = super().update(instance, validated_data)
-        try:
-            user.set_password(validated_data['password'])
-            user.save()
-        except KeyError:
-            pass
-        return user
+        # depth = 1  "id": 1,
+        #             "name_task": "Name of the task",
+        #             "description": "Specific description of the task to be performed",
+        #             "status": "1",
+        #             "created_at": "2022-09-03 11:19",
+        #             "updated_at": "2022-09-03 11:19",
+        #             "managers": [
+        #                 1
+        #             ]
+
+
+    # def update(self, instance, validated_data):
+    #     """Хэширование пароля при обновлении"""
+    #     user = super().update(instance, validated_data)
+    #     try:
+    #         user.set_password(validated_data['password'])
+    #         user.save()
+    #     except KeyError:
+    #         pass
+    #     return user
