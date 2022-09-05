@@ -30,15 +30,29 @@ class ManagersViewSet(ModelViewSet):
 
 class TaskViewSet(ModelViewSet):
     """Вью-сеты Менеджера"""
+    serializer_classes = {
+        'list': TaskListSerializers,
+        'retrieve': TaskDetailSerializers,
+        'create': TaskCreateSerializers,
+        'update': TaskUpdateSerializers,
+    }
+
     def get_queryset(self):
         """Получить кверисет"""
         return Task.objects.all()
 
     def get_serializer_class(self):
-        """Возвращает класс, который должен быть использован для сериализатора."""
-        if self.action in ("list", "retrieve"):
-            return TaskListSerializers
-        return TaskDetailSerializers
+        return self.serializer_classes.get(self.action)
+    # def get_serializer_class(self):
+    #     """Возвращает класс, который должен быть использован для сериализатора."""
+    #     if self.action in ("create",):
+    #         return TaskCreateSerializers
+    #     elif self.action in ("list", ):
+    #         return TaskListSerializers
+    #     elif self.action in ("update", ):
+    #         return TaskUpdateSerializers
+    #     # elif self.action in ("re",):
+    #     return TaskDetailSerializers
 
     # def get_permissions(self):
     #     """Создает экземпляр и возвращает список разрешений, которые требуются этому представлению."""
