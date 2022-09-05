@@ -19,7 +19,7 @@ class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class TaskUpdateView(generics.RetrieveUpdateDestroyAPIView):
-    """Информация про определенную задачу"""
+    """Обновление про определенную задачу"""
     serializer_class = TaskUpdateSerializers
     queryset = Task.objects.all()
     permission_classes = (IsAuthenticated,)

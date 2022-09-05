@@ -41,7 +41,7 @@ class ManagerUpdateSerializers(serializers.ModelSerializer):
 
 
 class TaskUpdateSerializers(serializers.ModelSerializer):
-    """Вывод полей содания задания"""
+    """Обновление полей задания"""
     managers = serializers.PrimaryKeyRelatedField(queryset=Manager.objects.all(), many=True)
 
     class Meta:
