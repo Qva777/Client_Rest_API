@@ -2,7 +2,7 @@ from django.urls import path
 from client_API import views
 
 app_name = 'task'
-http_request = {"put": "update", "get": "retrieve", "patch": "partial_update", "delete": "destroy"}
+http_request = {"put": "update",  "patch": "partial_update", "delete": "destroy"}
 urlpatterns = ([
     # viewsSets
     path('create-task/', views.TaskViewSet.as_view({"post": "create"})),
