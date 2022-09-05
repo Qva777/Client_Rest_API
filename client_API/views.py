@@ -18,6 +18,13 @@ class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
 
 
+class TaskUpdateView(generics.RetrieveUpdateDestroyAPIView):
+    """Информация про определенную задачу"""
+    serializer_class = TaskUpdateSerializers
+    queryset = Task.objects.all()
+    permission_classes = (IsAuthenticated,)
+
+
 class TaskListView(generics.ListAPIView):
     """Информация про все задачи"""
     serializer_class = TaskListSerializers

@@ -423,7 +423,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/task/1/",
+					"raw": "http://127.0.0.1:8000/api/task/put/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -435,6 +435,7 @@
 					"path": [
 						"api",
 						"task",
+						"put",
 						"1",
 						""
 					]
@@ -476,7 +477,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/task/1/",
+					"raw": "http://127.0.0.1:8000/api/task/put/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -488,6 +489,7 @@
 					"path": [
 						"api",
 						"task",
+						"put",
 						"1",
 						""
 					]
@@ -527,7 +529,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/task/1/",
+					"raw": "http://127.0.0.1:8000/api/task/put/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -539,6 +541,7 @@
 					"path": [
 						"api",
 						"task",
+						"put",
 						"1",
 						""
 					]
