@@ -54,10 +54,10 @@ class TaskViewSet(ModelViewSet):
     #     # elif self.action in ("re",):
     #     return TaskDetailSerializers
 
-    # def get_permissions(self):
-    #     """Создает экземпляр и возвращает список разрешений, которые требуются этому представлению."""
-    #     if self.action == 'list' or self.action == 'create':
-    #         permission_classes = [IsOwnerOrReadOnly]
-    #     else:
-    #         permission_classes = [IsAuthenticated]
-    #     return [permission() for permission in permission_classes]
+    def get_permissions(self):
+        """Создает экземпляр и возвращает список разрешений, которые требуются этому представлению."""
+        if self.action == 'list' or self.action == 'retrieve':
+            permission_classes = [IsOwnerOrReadOnly]
+        else:
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
