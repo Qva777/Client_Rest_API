@@ -1,8 +1,10 @@
 from django.urls import path
 from .views import *
 
+from .yasg import urlpatterns as doc_urls
+
 app_name = 'task'
-urlpatterns = ([
+urlpatterns = [
     # Create Task
     path('create-task/', TaskCreateView.as_view(), name='create_task'),
 
@@ -18,4 +20,10 @@ urlpatterns = ([
     path('task/put/<int:pk>/', TaskUpdateView.as_view(), name='task_update'),
     path('manager/put/<int:pk>/', ManagerUpdateSerializersViews.as_view(), name='manager_update'),
 
-])
+]
+
+
+urlpatterns += doc_urls
+#
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
