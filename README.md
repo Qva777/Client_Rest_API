@@ -1,4 +1,11 @@
 <h1>📍How to install: </h1>
+
+<h3>Automatic command execution for the first run</h3>
+<ul>
+  <li>for Windows: <b>first_start.bat</b></li>
+  <li>for Linux/MacOS: <b>first_start.sh</b></li>
+</ul>
+
 <h4>1 - Connect venv:</h4> 
 <i>python -m venv venv</i>
 <h4>2 - Activate it:</h4> 
