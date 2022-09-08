@@ -5,7 +5,7 @@
   <li>🔧for Windows: <b>first_start.bat</b></li>
   <li>⚙for Linux/MacOS: <b>first_start.sh</b></li>
 </ul>
-
+<h3>Manual start⬇</h3>
 <h4>1 - Connect venv:</h4> 
 <i>python -m venv venv</i>
 <h4>2 - Activate it:</h4> 
