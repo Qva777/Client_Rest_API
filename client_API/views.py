@@ -23,8 +23,8 @@ class PermissionsViewSet(ModelViewSet):
 class ManagersViewSet(PermissionsViewSet):
     """Вью-сеты Менеджера"""
     serializer_classes = {
-        # 'list': ManagerListSerializers,
-        # 'retrieve': ManagerDetailSerializers,
+        'list': ManagerListSerializers,
+        'retrieve': ManagerDetailSerializers,
         'update': ManagerUpdateSerializers,
         'partial_update': ManagerUpdateSerializers,
     }
