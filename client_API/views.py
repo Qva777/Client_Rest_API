@@ -54,6 +54,7 @@ class TaskViewSet(PermissionsViewSet):
         'retrieve': TaskDetailSerializers,
         'create': TaskCreateSerializers,
         'update': TaskUpdateSerializers,
+        'partial_update': TaskUpdateSerializers,
     }
 
     def get_queryset(self):
