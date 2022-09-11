@@ -13,7 +13,7 @@ class ManagerListSerializers(serializers.ModelSerializer):
 class TaskListSerializers(serializers.ModelSerializer):
     """Вывод полей всех задач"""
 
-    # managers = ManagerListSerializers(read_only=True, many=True) # детали менеджера
+    # managers = ManagerListSerializers(read_only=False, many=True) # детали менеджера
 
     class Meta:
         model = Task
@@ -40,13 +40,13 @@ class ManagerUpdateSerializers(serializers.ModelSerializer):
         return user
 
 
-class TaskUpdateSerializers(serializers.ModelSerializer):
-    """Обновление полей задания"""
-    managers = serializers.PrimaryKeyRelatedField(queryset=Manager.objects.all(), many=True)
-
-    class Meta:
-        model = Task
-        fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
+# class TaskUpdateSerializers(serializers.ModelSerializer):
+#     """Обновление полей задания"""
+#     managers = serializers.PrimaryKeyRelatedField(queryset=Manager.objects.all(), many=True)
+#
+#     class Meta:
+#         model = Task
+#         fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
         # fields = '__all__'
 
 
@@ -59,13 +59,13 @@ class TaskDetailSerializers(serializers.ModelSerializer):
         fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
 
 
-class TaskCreateSerializers(serializers.ModelSerializer):
-    """Вывод полей содания задания"""
-    managers = serializers.PrimaryKeyRelatedField(queryset=Manager.objects.all(), many=True)
-
-    class Meta:
-        model = Task
-        fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
+# class TaskCreateSerializers(serializers.ModelSerializer):
+#     """Вывод полей содания задания"""
+#     managers = serializers.PrimaryKeyRelatedField(queryset=Manager.objects.all(), many=True)
+#
+#     class Meta:
+#         model = Task
+#         fields = ('id', 'name_task', 'description', 'status', 'created_at', 'updated_at', 'managers')
         # fields = '__all__'
 
 
