@@ -1,6 +1,6 @@
 from django.urls import path, re_path
-# from rest_framework import permissions
-from client_API import permissions
+from rest_framework import permissions
+# from client_API import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
@@ -13,7 +13,7 @@ schema_view = get_schema_view(
       license=openapi.License(name="BSD License"),
    ),
    public=True,
-   permission_classes=(permissions.IsOwnerOrReadOnly,),
+   permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [

@@ -14,10 +14,6 @@ urlpatterns = [
     # Detail
     path('task/<int:pk>/', TaskDetailView.as_view(), name='task_detail'),
     path('manager/<int:pk>/', ManagerDetailView.as_view(), name='manager_detail'),
-
-    # Update
-    # path('task/put/<int:pk>/', TaskUpdateView.as_view(), name='task_update'),
-    # path('manager/put/<int:pk>/', ManagerUpdateSerializersViews.as_view(), name='manager_update'),
 ]
 
 urlpatterns += doc_urls
