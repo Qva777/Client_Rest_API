@@ -68,7 +68,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name_task\": \"Name of the task\",\r\n    \"description\": \"Specific description of the task to be performed\",\r\n    \"status\": \"1\",\r\n    \"managers\": [\r\n        1\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Name of the task\",\r\n    \"description\": \"Specific description of the task to be performed\",\r\n    \"status\": \"1\",\r\n    \"managers\": [\r\n        1\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -189,7 +189,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"first_name\": \"{{first_name}}\",\r\n    \"last_name\": \"{{last_name}}\",\r\n    \"email\": null,\r\n    \"password\": \"{{password}}\",\r\n    \"tasks\": [\r\n        1\r\n    ]\r\n}",
+					"raw": "{\r\n    \"username\": \"{{username}}q\",\r\n    \"first_name\": \"{{first_name}}\",\r\n    \"last_name\": \"{{last_name}}\",\r\n    \"email\": null,\r\n    \"password\": \"{{password}}\",\r\n    \"tasks\": [\r\n        2,1\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -229,7 +229,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tasks\": [\r\n    2\r\n    ]\r\n}",
+					"raw": "{\r\n    \"tasks\": [\r\n    \r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -401,7 +401,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name_task\": \"Name of the task\",\r\n    \"description\": \"Specific description of the task to be performed\",\r\n    \"status\": \"1\",\r\n    \"managers\": [\r\n        \r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Name of the task\",\r\n    \"description\": \"Specific description of the task to be performed\",\r\n    \"status\": \"1\",\r\n    \"managers\": [\r\n        1\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
