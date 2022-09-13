@@ -11,7 +11,7 @@ class TaskStatus(models.TextChoices):
 
 class Task(models.Model):
     """Модели/поля таблицы задач"""
-    name_task = models.CharField(verbose_name='Название Задачи', max_length=64, blank=False, unique=True, )
+    name = models.CharField(verbose_name='Название Задачи', max_length=64, blank=False, unique=True, )
     description = models.CharField(verbose_name='Описание Задачи', max_length=255, blank=False)
     status = models.CharField(max_length=30, choices=TaskStatus.choices, default=TaskStatus.CREATED, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации зписи', blank=False)
@@ -19,7 +19,7 @@ class Task(models.Model):
 
     def __str__(self):
         """Строковое представление"""
-        return self.name_task
+        return self.name
 
     class Meta:
         verbose_name = 'Задача'
