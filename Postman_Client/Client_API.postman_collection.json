@@ -68,7 +68,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name_task\": \"Name of the task\",\r\n    \"description\": \"Specific description of the task to be performed\",\r\n    \"status\": \"1\",\r\n    \"managers\": [\r\n        1\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\": \"Name of the task\",\r\n    \"description\": \"Specific description of the task to be performed\",\r\n    \"status\": \"1\",\r\n    \"managers\": [\r\n        1\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -197,7 +197,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/manager/put/1/",
+					"raw": "http://127.0.0.1:8000/api/manager/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -209,7 +209,6 @@
 					"path": [
 						"api",
 						"manager",
-						"put",
 						"1",
 						""
 					]
@@ -230,7 +229,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tasks\": [\r\n    2\r\n    ]\r\n}",
+					"raw": "{\r\n    \"tasks\": [\r\n    \r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -238,7 +237,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/manager/put/1/",
+					"raw": "http://127.0.0.1:8000/api/manager/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -250,7 +249,6 @@
 					"path": [
 						"api",
 						"manager",
-						"put",
 						"1",
 						""
 					]
@@ -270,7 +268,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/manager/put/1/",
+					"raw": "http://127.0.0.1:8000/api/manager/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -282,7 +280,6 @@
 					"path": [
 						"api",
 						"manager",
-						"put",
 						"1",
 						""
 					]
@@ -403,24 +400,13 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "name_task",
-							"value": "Name of the task",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Specific description of the task to be performed",
-							"type": "text"
-						},
-						{
-							"key": "status",
-							"value": "2",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Name of the task\",\r\n    \"description\": \"Specific description of the task to be performed\",\r\n    \"status\": \"1\",\r\n    \"managers\": [\r\n        1\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/task/1/",
@@ -454,26 +440,13 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "name_task",
-							"value": "Name of the task",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Specific description of the task to be performed",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "status",
-							"value": "PR",
-							"type": "text",
-							"disabled": true
+					"mode": "raw",
+					"raw": "{\r\n    \"managers\": [\r\n        1\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/task/1/",
