@@ -14,7 +14,7 @@ class ManagerAdmin(admin.ModelAdmin):
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     """Регистрация Модели Заданий в админке, вывод полей"""
-    list_display = ('id', 'name_task', 'status', 'created_at', 'updated_at')
-    list_display_links = ('id', 'name_task')
-    search_fields = ('name_task',)
+    list_display = ('id', 'name', 'status', 'created_at', 'updated_at')
+    list_display_links = ('id', 'name')
+    search_fields = ('name',)
     save_on_top = True
