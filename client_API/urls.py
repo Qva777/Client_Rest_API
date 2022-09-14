@@ -13,8 +13,5 @@ urlpatterns = [
     # All Item List
     path('all-tasks/', TaskListView.as_view(), name='all_tasks'),
     path('all-managers/', ManagerListView.as_view(), name='all_managers'),
-
-
-
 ]
 urlpatterns += doc_urls
