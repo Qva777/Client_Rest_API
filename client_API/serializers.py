@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Manager, Task
 
 
-class ManagerListSerializers(serializers.HyperlinkedModelSerializer):
+class ManagerListSerializers(serializers.ModelSerializer):
     """Вывод полей всех менеджеров"""
     tasks = serializers.PrimaryKeyRelatedField(queryset=Task.objects.all(), many=True)
 
