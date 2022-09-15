@@ -43,8 +43,8 @@ class TaskListSerializers(serializers.ModelSerializer):
 
 class TaskDetailSerializers(serializers.ModelSerializer):
     """Вывод полей определенного задания"""
-    # managers = ManagerListSerializers(read_only=True, many=True)  # детали менеджера
-    managers = serializers.HyperlinkedIdentityField(many=True, view_name='api_url_link:manager_detail')
+    managers = ManagerListSerializers(read_only=True, many=True)  # детали менеджера
+    # managers = serializers.HyperlinkedIdentityField(many=True, view_name='api_url_link:manager_detail')
 
     class Meta:
         model = Task
@@ -53,8 +53,8 @@ class TaskDetailSerializers(serializers.ModelSerializer):
 
 class ManagerDetailSerializers(serializers.ModelSerializer):
     """Вывод полей определенного менеджера"""
-    # tasks = TaskListSerializers(read_only=True, many=True)  # Убрать поле менеджера show_managers=False
-    tasks = serializers.HyperlinkedIdentityField(many=True, view_name='api_url_link:task_detail')
+    tasks = TaskListSerializers(read_only=True, many=True)  # Убрать поле менеджера show_managers=False
+    # tasks = serializers.HyperlinkedIdentityField(many=True, view_name='api_url_link:task_detail')
 
     class Meta:
         model = Manager
