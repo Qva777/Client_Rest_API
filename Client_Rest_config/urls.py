@@ -21,7 +21,7 @@ urlpatterns = [
     # APP
     path('admin/', admin.site.urls),
     path('', include("client_frontend.urls")),
-    path('api/', include("client_API.urls")),
+    path('api/', include(("client_API.urls", "API_URL_LINK"), namespace='api_url_link')),
     path('sign-in/', include('rest_framework.urls'), name='sign_in'),
 
     # # DJOSER TOKEN
