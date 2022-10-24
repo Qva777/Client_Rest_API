@@ -1,16 +1,8 @@
 FROM python
 
-RUN  pip install --upgrade pip
-
-#it will be copied in /code/
-COPY requirements.txt .
-
-####WORKDIR /tmp
-#we want to make sure that each of our dependencies are going to be installed in our container
-RUN pip install -r requirements.txt
-#RUN pip install --requirements requirements.txt
-
-#copy the entire project to the directory that we have created
-COPY . .
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get -y update   && \
+    apt-get -y upgrade  && \
+    apt-get -y install requirements.txt
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
