@@ -11,6 +11,3 @@ COPY . .
 CMD ["python", "manage.py", "makemigrations"]
 CMD ["python", "manage.py", "migrate"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-#docker build --tag python-django .
-#docker run --publish 8000:8000 python-django
