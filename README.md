@@ -29,3 +29,11 @@
 <h4>1 - Import Postman_Client folder into Postman</h4> 
 <h4>2 - The environment settings are called User Data</h4>
 <h4>3 - The Client_API collection contains requests</h4>
+
+<h1>🐳How to connect Docker:</h1>
+<h4>1 - Creat image:</h4>
+<i>docker build --tag django .</i>
+<h4>2 - Look images:</h4>
+<i>docker images</i>
+<h4>3 - Run Container localhost - 127.0.0.1:8000</h4>
+<i>docker run -d --name mycontainer -p 8000:8000 </i>
