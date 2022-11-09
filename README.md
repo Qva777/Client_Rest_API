@@ -37,3 +37,7 @@
 <i>docker images</i>
 <h4>3 - Run Container localhost - 127.0.0.1:8000</h4>
 <i>docker run -d --name mycontainer -p 8000:8000 django</i>
+
+<h4> </h4>
+<i>docker-compose up -d</i>
+
