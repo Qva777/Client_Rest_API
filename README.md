@@ -30,7 +30,7 @@
 <h4>2 - The environment settings are called User Data</h4>
 <h4>3 - The Client_API collection contains requests</h4>
 
-<h1>🐳How to connect Docker:</h1>
+<h1>🐳How to connect Docker/Docker Compose:</h1>
 <h4>1 - Creat image:</h4>
 <i>docker build --tag django .</i>
 <h4>2 - Look images:</h4>
