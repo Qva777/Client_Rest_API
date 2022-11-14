@@ -27,22 +27,7 @@
 
 ##docker build --tag postgres .
 ## docker run --name some-postgres -e POSTGRES_PASSWORD=123456 -d postgres
-#ggg
-#services:
-#  db:
-#    image: postgres
-#    environment:
-#      POSTGRES_DB: 'db_client'
-#      POSTGRES_USER: postgres
-#      POSTGRES_PASSWORD: 123456
-#      POSTGRES_HOST_AUTH_METHOD: trust
-#  web:
-#    build: .
-#    command: manage.py runserver 0.0.0.0:8000
-#    ports:
-#      - 8000:8000
-#    depends_on:
-#      - db
+#
 
 services:
   db:
@@ -55,7 +40,7 @@ services:
       - POSTGRES_PASSWORD=123456
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000     #migrate
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
