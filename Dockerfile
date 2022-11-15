@@ -1,7 +1,8 @@
 FROM python:3.8
 LABEL "name"="I'm author prod"
 #RUN  pip install --upgrade pip
-#ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONDONTWRITEBYTECODE 1
+# //
 # Main directory
 WORKDIR /app
 # Run install pip and libraries
