@@ -30,14 +30,7 @@
 <h4>2 - The environment settings are called User Data</h4>
 <h4>3 - The Client_API collection contains requests</h4>
 
-<h1>🐳How to connect Docker/Docker Compose:</h1>
-<h4>1 - Creat image:</h4>
-<i>docker build --tag django .</i>
-<h4>2 - Look images:</h4>
-<i>docker images</i>
-<h4>3 - Run Container localhost - 127.0.0.1:8000</h4>
-<i>docker run -d --name mycontainer -p 8000:8000 django</i>
-<br><br>
-<h4>1 - Docker-compose:</h4>
+<h1>🐳How to connect Docker Compose:</h1>
+<h4>UP Docker-compose:</h4>
 <i>docker-compose up -d</i>
 
