@@ -33,24 +33,9 @@
 <h1>🐳How to connect Docker Compose:</h1>
 <h4>UP Docker-compose:</h4>
 <i>docker-compose up -d</i>
-<br><br>
-<details>
-<summary>Well</summary>
 
-<details>
-<summary>Try this</summary>
 
- <details>
- <summary>The other one</summary>
-
-   <details>
-   <summary>Ok, try this</summary>
-   You got me 😂
-   </details>
- </details>
-</details>
-</details>
-<br><br>
-<details><summary>Cool Dropdown</summary><br/>
-blah blah blah blah you found me!
+<details><summary><h1>🐳How to connect Docker Compose:</h1></summary><br/>
+<h4>UP Docker-compose:</h4>
+<i>docker-compose up -d</i>
 </details>
