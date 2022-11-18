@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', "123")
+# SECRET_KEY = os.environ.get('SECRET_KEY', "123")
+SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', "True")
 
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 5,
+    'PAGE_SIZE': 10,
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M",
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.IsAuthenticated',
@@ -99,14 +100,14 @@ WSGI_APPLICATION = 'Client_Rest_config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-# PostgreSQL
+# PostgreSQL connect your database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_client',
         'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': 'db',  # '127.0.0.1',
+        'PASSWORD': '123456', #os.getenv('PASSWORD'),  #
+        'HOST': '127.0.0.1', # 'db',  # for docker
         'PORT': '5432',
     }
 }
