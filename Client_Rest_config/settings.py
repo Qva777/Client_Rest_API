@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('SECRET_KEY', "123")
-SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY', "123")  # for create container
+SECRET_KEY = os.getenv('SECRET_KEY')  # for run server
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', "True")
 
@@ -106,8 +106,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_client',
         'USER': 'postgres',
-        'PASSWORD': '123456', #os.getenv('PASSWORD'),  #
-        'HOST': '127.0.0.1', # 'db',  # for docker
+        'PASSWORD': os.getenv('PASSWORD'),  # '123456',  # for create container
+        'HOST': '127.0.0.1',  # 'db',  # for create container
         'PORT': '5432',
     }
 }
