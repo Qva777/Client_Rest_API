@@ -8,17 +8,17 @@
 </details>
 <details><summary><h2>⬇Manual start</h2></summary><br>
 <h4>1 - Connect venv:</h4> 
-<i>python -m venv venv</i>
+<pre>python -m venv venv</pre>
 <h4>2 - Activate it:</h4> 
-<i>.\venv\Scripts\activate</i>
+<pre>.\venv\Scripts\activate</pre>
 <h4>3 - Install libraries:</h4>
-<i>pip install -r requirements.txt</i>
+<pre>pip install -r requirements.txt</pre>
 <h4>4 - Run the migration:</h4> 
-<i>python manage.py makemigrations</i>
+<pre>python manage.py makemigrations</pre>
 <h4>5 - Apply migration:</h4> 
-<i>python manage.py migrate</i>
+<pre>python manage.py migrate</pre>
 <h4>6 - Run server:</h4> 
-<i>python manage.py runserver</i>
+<pre>python manage.py runserver</pre>
 </details>
 
 <details><summary><h1>📮How to connect Postman:</h1></summary><br/>
@@ -29,5 +29,5 @@
 
 <details><summary><h1>🐳How to connect Docker Compose:</h1></summary><br/>
 <h4>UP Docker-compose:</h4>
-<i>docker-compose up -d</i>
+<pre>docker-compose up -d</pre>
 </details>
