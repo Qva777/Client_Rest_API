@@ -3,7 +3,7 @@
 <details><summary><h2>🧾Automatic command execution for the first run</h2></summary><br>
 <ul>
   <li>🔧for Windows:     <b>first_start.bat</b></li>
-  <li>⚙for Linux/MacOS: <b>first_start.sh</b></li>
+  <li>⚙for Linux/MacOS: <b>sh first_start.sh</b></li>
 </ul>
 </details>
 <details><summary><h2>⬇Manual start</h2></summary><br>
